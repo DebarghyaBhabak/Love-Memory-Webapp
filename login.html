@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🛡️ S.H.I.E.L.D. Secure Access</title>
+    <meta name="description" content="Stark Industries Secure Access Portal — Authorized Personnel Only">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+</head>
+<body>
+
+    <!-- Animated Background -->
+    <div class="im-bg">
+        <div class="hud-circle"></div>
+        <div class="hud-circle"></div>
+        <div class="hud-circle"></div>
+    </div>
+
+    <!-- HUD Corner Elements -->
+    <div class="hud-corner hud-corner--tl"></div>
+    <div class="hud-corner hud-corner--tr"></div>
+    <div class="hud-corner hud-corner--bl"></div>
+    <div class="hud-corner hud-corner--br"></div>
+
+    <!-- HUD Status Bar -->
+    <div class="hud-status-bar">
+        <div class="hud-status-dot"></div>
+        <span>STARK INDUSTRIES</span>
+        <span>•</span>
+        <span id="statusTime">00:00:00</span>
+        <span>•</span>
+        <span>ENCRYPTED</span>
+        <div class="hud-status-dot"></div>
+    </div>
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <div class="card-glow"></div>
+        <div class="login-card">
+
+            <!-- Arc Reactor -->
+            <div class="arc-reactor">
+                <div class="arc-reactor-core"></div>
+                <div class="arc-ring arc-ring--1"></div>
+                <div class="arc-ring arc-ring--2"></div>
+                <div class="arc-ring arc-ring--3"></div>
+                <div class="arc-ring arc-ring--4"></div>
+            </div>
+
+            <!-- Header -->
+            <div class="login-header">
+                <h1 class="login-title">Secure Access</h1>
+                <p class="login-subtitle">Authorization Required</p>
+            </div>
+
+            <!-- Login Form -->
+            <form class="login-form" id="loginForm" autocomplete="off">
+                <div class="input-group">
+                    <label class="input-label" for="accessCode">Access Code</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">⟩</span>
+                        <input
+                            type="password"
+                            id="accessCode"
+                            class="input-field"
+                            placeholder="Enter access code..."
+                            maxlength="20"
+                            autocomplete="off"
+                            spellcheck="false"
+                        >
+                        <button type="button" class="toggle-password" id="togglePass" title="Toggle visibility">🔒</button>
+                    </div>
+                    <div class="security-bar">
+                        <div class="security-segment"></div>
+                        <div class="security-segment"></div>
+                        <div class="security-segment"></div>
+                        <div class="security-segment"></div>
+                        <div class="security-segment"></div>
+                        <div class="security-segment"></div>
+                        <div class="security-segment"></div>
+                        <div class="security-segment"></div>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    Initialize Access
+                </button>
+            </form>
+
+            <!-- Status Message -->
+            <div class="status-message" id="statusMessage">
+                AWAITING CREDENTIALS
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="hud-footer">
+        JARVIS v4.2.1 • QUANTUM ENCRYPTED • STARK INDUSTRIES ©
+    </div>
+
+    <!-- Attempt Counter -->
+    <div class="attempt-counter">
+        ATTEMPTS: <span id="attemptCount">0</span> / 5
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

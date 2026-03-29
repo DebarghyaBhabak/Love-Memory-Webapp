@@ -2,6 +2,11 @@
    💖 LOVE MEMORIES WEBSITE - MAGICAL SCRIPT 💖
    =================================================== */
 
+// === LOGIN GATE: Redirect to login if not authenticated ===
+if (sessionStorage.getItem('loveWebAccess') !== 'granted') {
+    window.location.href = 'login.html';
+}
+
 // ==========================================
 // 1. FLOATING HEARTS BACKGROUND
 // ==========================================
