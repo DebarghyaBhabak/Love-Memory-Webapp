@@ -29,6 +29,20 @@ function createFloatingHearts() {
 // ==========================================
 // 2. STARRY SKY IN HERO
 // ==========================================
+function shuffleArray(arr, correctAnswer) {
+    const shuffled = [...arr];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    // If correct answer ended up first, swap it with a random other position
+    if (correctAnswer && shuffled[0] === correctAnswer) {
+        const swapIdx = 1 + Math.floor(Math.random() * (shuffled.length - 1));
+        [shuffled[0], shuffled[swapIdx]] = [shuffled[swapIdx], shuffled[0]];
+    }
+    return shuffled;
+}
+
 function createStars() {
     const container = document.getElementById('heroStars');
     for (let i = 0; i < 150; i++) {
@@ -195,46 +209,45 @@ function createMiniHearts(element) {
 // 8. REASONS I LOVE YOU - JAR
 // ==========================================
 const reasons = [
-    "Your smile lights up my entire world 🌟",
+    "Your smile lights up my entire world, Anuska 🌟",
     "The way you laugh at my terrible jokes 😂",
-    "How you make even boring days magical ✨",
+    "How you make even boring school days magical ✨",
     "Your kind and caring heart 💖",
     "The way you look at me like I'm your whole world 🌍",
     "How safe I feel when I'm with you 🛡️",
     "Your beautiful eyes that I could stare into forever 👀",
-    "The way you hold my hand 🤝",
-    "Your silly dance moves that always make me laugh 💃",
+    "The adorable way you fall asleep during calls 😴💕",
+    "Your love for butterscotch ice cream — it's the cutest thing 🍦",
     "How you always know exactly what to say 💬",
-    "The way you smell — it's my favorite scent ever 🌸",
-    "How you believe in me even when I don't believe in myself 💪",
-    "Your morning texts that make my day before it even starts 📱",
+    "How you believe in me even when I don't 💪",
+    "Your morning texts (when you finally wake up!) that make my day 📱",
     "The way you care about everyone around you 🤗",
     "How you make me want to be a better person 🌱",
-    "Your voice — I could listen to you talk forever 🎵",
+    "Your sleepy voice at midnight — my favorite sound ever 🎵",
     "The way you surprise me with little things 🎁",
     "How you remember the smallest details about us 📝",
     "Your hugs that feel like home 🏠",
     "The way you say my name 💕",
     "How passionate you are about the things you love 🔥",
     "Your patience with me 🕊️",
-    "The way you scrunch your nose when you're thinking 😊",
+    "Those school corridor walks that I'll never forget 🏫",
     "How we can sit in silence and it's still perfect 🌙",
     "Your determination and strength 💎",
     "The way you always put others before yourself 👑",
-    "How you make my heart race even after all this time ❤️‍🔥",
+    "How you make my heart race even after 3+ years ❤️‍🔥",
     "Your creativity and imagination 🎨",
     "The way you look when you're sleeping peacefully 😴",
     "How you always encourage me to chase my dreams 🌈",
     "Your cute little habits that I adore 🐾",
-    "The way food tastes better when I'm eating with you 🍝",
-    "How you're my favorite adventure partner 🧭",
+    "Sharing butterscotch ice cream with you hits different 🍨",
+    "How you're my favorite adventure partner since school 🧭",
     "Your intelligence — beauty AND brains 🧠",
     "The way you make me feel like the luckiest person alive 🍀",
     "How every song reminds me of you now 🎶",
     "Your loyalty and commitment to us 💍",
     "The way you always try to make things work 🛠️",
-    "How you've changed my life for the better 🌅",
-    "Simply because you are YOU — and that's more than enough 💖",
+    "How you've changed my life for the better since school days 🌅",
+    "Because you are Anuska — and that's more than enough 💖",
 ];
 
 // Fill jar with hearts
@@ -271,36 +284,47 @@ document.getElementById('pickReason').addEventListener('click', () => {
 });
 
 // ==========================================
-// 9. LOVE QUIZ
+// 9. LOVE QUIZ (with Volume Bar finale)
 // ==========================================
 const quizQuestions = [
     {
-        question: "What makes our relationship special? 💕",
-        options: ["We never fight", "We face everything together", "We only have good days", "We avoid problems"],
-        correct: 1
+        question: "When did my eyes first see your beauty? 👀✨",
+        options: ["Primary School", "High School", "Coaching Days", "College Time"],
+        correctAnswer: "Primary School"
     },
     {
-        question: "What's the best part of being together? 🌟",
-        options: ["Material gifts", "Being with each other", "Never disagreeing", "Having the same opinions"],
-        correct: 1
+        question: "When did I try but fail to propose you? 😅💔",
+        options: ["After 10th Exam", "During School Days", "After 12th Boards", "During College"],
+        correctAnswer: "After 10th Exam"
     },
     {
-        question: "What do we always say to each other? 💬",
-        options: ["See you later", "Whatever", "I love you 💖", "Nothing much"],
-        correct: 2
+        question: "Why did we start talking again after a long time? 📝",
+        options: ["To deliver your notes", "Random message", "Mutual friend", "Social media"],
+        correctAnswer: "To deliver your notes"
     },
     {
-        question: "What's our love language? 🥰",
-        options: ["Ignoring each other", "All of them — we love fully", "Only texts", "Only gifts"],
-        correct: 1
+        question: "Who is the special person who wrote our bond? 👵💕",
+        options: ["My Grandma", "Destiny", "Time", "Luck"],
+        correctAnswer: "My Grandma"
     },
     {
-        question: "What would we do with a free weekend? 🌈",
-        options: ["Stay apart", "Spend every moment together", "Only sleep", "Watch TV separately"],
-        correct: 1
+        question: "When did I say 'I love you'? 💖",
+        options: ["2/3/2023", "14/2/2023", "1/1/2023", "10/3/2023"],
+        correctAnswer: "2/3/2023"
+    },
+    {
+        question: "E = ? 🧪✨",
+        options: ["mc²", "m²c", "c²m", "Love"],
+        correctAnswer: "mc²"
+    },
+    {
+        question: "What do I love most about you? 😏💕",
+        options: ["Your Eyes", "A Secret Thing 🤫", "Your Brain", "Your Soft Skin"],
+        correctAnswer: "A Secret Thing 🤫"
     },
 ];
 
+const TOTAL_QUESTIONS = 8; // 7 MCQ + 1 volume bar
 let currentQuestion = 0;
 let score = 0;
 
@@ -310,14 +334,35 @@ const quizOptions = document.getElementById('quizOptions');
 const quizStartBtn = document.getElementById('quizStartBtn');
 const quizResult = document.getElementById('quizResult');
 const quizProgressBar = document.getElementById('quizProgressBar');
+const quizQuestionNumber = document.getElementById('quizQuestionNumber');
+const volumeQuestionEl = document.getElementById('volumeQuestion');
 
 quizStartBtn.addEventListener('click', startQuiz);
 document.getElementById('quizRestartBtn').addEventListener('click', () => {
     quizResult.style.display = 'none';
     quizCard.style.display = 'block';
+    volumeQuestionEl.style.display = 'none';
+    document.getElementById('resultLoveMessage').style.display = 'none';
     currentQuestion = 0;
     score = 0;
     quizProgressBar.style.width = '0%';
+    volumeTriggered = false;
+    // Reset volume bar
+    const vFill = document.getElementById('volumeFill');
+    const vBall = document.getElementById('volumeBall');
+    const vPercent = document.getElementById('volumePercent');
+    const vDropped = document.getElementById('volumeBallDropped');
+    const sliderArea = document.getElementById('volumeSliderArea');
+    const celebrationEl = document.getElementById('volumeCelebration');
+    vFill.style.width = '0%';
+    vBall.style.left = '0%';
+    vBall.classList.remove('glow-intense');
+    vPercent.textContent = '0%';
+    vPercent.classList.remove('over-hundred');
+    vDropped.style.display = 'none';
+    sliderArea.style.display = 'block';
+    celebrationEl.style.display = 'none';
+    celebrationEl.innerHTML = '';
     startQuiz();
 });
 
@@ -328,30 +373,34 @@ function startQuiz() {
 
 function showQuestion() {
     const q = quizQuestions[currentQuestion];
+    quizQuestionNumber.textContent = `Question ${currentQuestion + 1} of ${TOTAL_QUESTIONS}`;
     quizQuestion.textContent = q.question;
     quizOptions.innerHTML = '';
-    quizProgressBar.style.width = ((currentQuestion / quizQuestions.length) * 100) + '%';
+    quizProgressBar.style.width = ((currentQuestion / TOTAL_QUESTIONS) * 100) + '%';
 
-    q.options.forEach((option, index) => {
+    // Shuffle options and track correct answer
+    const shuffled = shuffleArray(q.options, q.correctAnswer);
+    const correctIdx = shuffled.indexOf(q.correctAnswer);
+
+    shuffled.forEach((option, index) => {
         const btn = document.createElement('button');
         btn.classList.add('quiz-option');
         btn.textContent = option;
-        btn.addEventListener('click', () => selectAnswer(index, btn));
+        btn.addEventListener('click', () => selectAnswer(index, btn, correctIdx));
         quizOptions.appendChild(btn);
     });
 }
 
-function selectAnswer(index, btn) {
-    const q = quizQuestions[currentQuestion];
+function selectAnswer(index, btn, correctIdx) {
     const allBtns = quizOptions.querySelectorAll('.quiz-option');
     allBtns.forEach(b => b.style.pointerEvents = 'none');
 
-    if (index === q.correct) {
+    if (index === correctIdx) {
         btn.classList.add('correct');
         score++;
     } else {
         btn.classList.add('wrong');
-        allBtns[q.correct].classList.add('correct');
+        allBtns[correctIdx].classList.add('correct');
     }
 
     setTimeout(() => {
@@ -359,33 +408,207 @@ function selectAnswer(index, btn) {
         if (currentQuestion < quizQuestions.length) {
             showQuestion();
         } else {
-            showResult();
+            // Show volume bar question instead of result
+            showVolumeQuestion();
         }
     }, 1200);
 }
 
+// ==========================================
+// VOLUME BAR - "How much do you love me?"
+// ==========================================
+let volumeTriggered = false;
+let isDragging = false;
+let volumeValue = 0;
+
+function showVolumeQuestion() {
+    quizCard.style.display = 'none';
+    volumeQuestionEl.style.display = 'block';
+    quizProgressBar.style.width = ((quizQuestions.length / TOTAL_QUESTIONS) * 100) + '%';
+    initVolumeSlider();
+}
+
+function initVolumeSlider() {
+    const track = document.getElementById('volumeTrack');
+    const ball = document.getElementById('volumeBall');
+    const fill = document.getElementById('volumeFill');
+    const percentLabel = document.getElementById('volumePercent');
+
+    function getPercent(clientX) {
+        const rect = track.getBoundingClientRect();
+        const x = clientX - rect.left;
+        const trackWidth = rect.width;
+        // Allow up to 115% to trigger "past 100%"
+        let pct = Math.max(0, (x / trackWidth) * 100);
+        return pct;
+    }
+
+    function updateSlider(pct) {
+        if (volumeTriggered) return;
+        volumeValue = pct;
+
+        const displayPct = Math.round(pct);
+        const cappedFill = Math.min(pct, 100);
+
+        fill.style.width = cappedFill + '%';
+        ball.style.left = cappedFill + '%';
+        percentLabel.textContent = displayPct + '%';
+
+        if (pct >= 100) {
+            ball.classList.add('glow-intense');
+            percentLabel.classList.add('over-hundred');
+        } else {
+            ball.classList.remove('glow-intense');
+            percentLabel.classList.remove('over-hundred');
+        }
+    }
+
+    // Mouse events
+    ball.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        isDragging = true;
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging || volumeTriggered) return;
+        updateSlider(getPercent(e.clientX));
+    });
+
+    document.addEventListener('mouseup', () => {
+        if (isDragging && volumeValue >= 105 && !volumeTriggered) {
+            isDragging = false;
+            triggerBallDrop();
+        }
+        isDragging = false;
+    });
+
+    // Touch events for mobile
+    ball.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        isDragging = true;
+    });
+
+    document.addEventListener('touchmove', (e) => {
+        if (!isDragging || volumeTriggered) return;
+        const touch = e.touches[0];
+        updateSlider(getPercent(touch.clientX));
+    });
+
+    document.addEventListener('touchend', () => {
+        if (isDragging && volumeValue >= 105 && !volumeTriggered) {
+            isDragging = false;
+            triggerBallDrop();
+        }
+        isDragging = false;
+    });
+
+    // Click on track
+    track.addEventListener('click', (e) => {
+        if (volumeTriggered) return;
+        updateSlider(getPercent(e.clientX));
+        if (volumeValue >= 105) {
+            triggerBallDrop();
+        }
+    });
+}
+
+function triggerBallDrop() {
+    volumeTriggered = true;
+
+    // Hide the slider area
+    const sliderArea = document.getElementById('volumeSliderArea');
+    sliderArea.style.display = 'none';
+
+    // Show the dropped ball bouncing
+    const droppedArea = document.getElementById('volumeBallDropped');
+    droppedArea.style.display = 'block';
+
+    // Show celebration
+    const celebrationEl = document.getElementById('volumeCelebration');
+    celebrationEl.style.display = 'block';
+    createVolumeCelebration(celebrationEl);
+
+    // Update progress bar to 100%
+    quizProgressBar.style.width = '100%';
+
+    // After bounce animation finishes, show result
+    setTimeout(() => {
+        volumeQuestionEl.style.display = 'none';
+        celebrationEl.style.display = 'none';
+        showResult();
+    }, 3500);
+}
+
+function createVolumeCelebration(container) {
+    const hearts = ['💖', '💕', '💗', '💝', '🩷', '❤️', '✨', '🌟', '🦋', '🌸', '💫', '🎉'];
+    const colors = ['#f06595', '#e599f7', '#ffd43b', '#faa2c1', '#cc5de8', '#fb7185'];
+
+    // Burst hearts from center
+    for (let i = 0; i < 40; i++) {
+        setTimeout(() => {
+            const heart = document.createElement('div');
+            heart.className = 'celebration-heart';
+            heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = (40 + Math.random() * 20) + '%';
+            heart.style.top = (40 + Math.random() * 20) + '%';
+            heart.style.fontSize = (Math.random() * 20 + 16) + 'px';
+            heart.style.setProperty('--tx', (Math.random() * 300 - 150) + 'px');
+            heart.style.setProperty('--ty', (Math.random() * -400 - 100) + 'px');
+            container.appendChild(heart);
+            setTimeout(() => heart.remove(), 3000);
+        }, i * 60);
+    }
+
+    // Sparkle burst
+    for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'celebration-sparkle';
+            sparkle.style.left = '50%';
+            sparkle.style.top = '50%';
+            sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+            sparkle.style.boxShadow = `0 0 8px ${colors[Math.floor(Math.random() * colors.length)]}`;
+            const angle = (Math.PI * 2 * i) / 50;
+            const dist = Math.random() * 250 + 100;
+            sparkle.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+            sparkle.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+            container.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1500);
+        }, 200 + i * 30);
+    }
+}
+
 function showResult() {
     quizCard.style.display = 'none';
+    volumeQuestionEl.style.display = 'none';
     quizResult.style.display = 'block';
     quizProgressBar.style.width = '100%';
 
     const resultEmoji = document.getElementById('resultEmoji');
     const resultTitle = document.getElementById('resultTitle');
     const resultMessage = document.getElementById('resultMessage');
+    const loveMessage = document.getElementById('resultLoveMessage');
 
-    if (score === quizQuestions.length) {
+    const totalMCQ = quizQuestions.length;
+
+    if (score === totalMCQ) {
         resultEmoji.textContent = '💖';
         resultTitle.textContent = 'Perfect Score!';
-        resultMessage.textContent = `You got ${score}/${quizQuestions.length}! You know us perfectly! We're meant to be! 💕`;
-    } else if (score >= quizQuestions.length * 0.6) {
+        resultMessage.textContent = `You got ${score}/${totalMCQ} — and your love meter went past 100%! We're written in the stars, Anuska! 💕`;
+    } else if (score >= totalMCQ * 0.6) {
         resultEmoji.textContent = '🥰';
         resultTitle.textContent = 'Almost Perfect!';
-        resultMessage.textContent = `You got ${score}/${quizQuestions.length}! You know us so well! 💗`;
+        resultMessage.textContent = `You got ${score}/${totalMCQ} — but your infinite love makes up for everything! 💗`;
     } else {
         resultEmoji.textContent = '💕';
         resultTitle.textContent = 'Not Bad!';
-        resultMessage.textContent = `You got ${score}/${quizQuestions.length}! Let's make more memories so you'll ace it next time! 🌟`;
+        resultMessage.textContent = `You got ${score}/${totalMCQ} — but no matter the score, you're still my everything! 🌟`;
     }
+
+    // Show the love message after a short delay
+    setTimeout(() => {
+        loveMessage.style.display = 'block';
+    }, 800);
 }
 
 // ==========================================
@@ -458,7 +681,7 @@ function createHeartRain() {
 }
 
 function typeMessage() {
-    const text = "You are the most beautiful chapter of my life. Every moment with you is a gift I'll cherish forever. Thank you for choosing me, for loving me, and for making my world complete. I love you more than all the stars in the sky... 💖✨";
+    const text = "Anuska, you are the most beautiful chapter of my life. From stealing glances at school to falling deeper in love every single day — every moment with you is a gift I'll cherish forever. Thank you for 3+ incredible years, for your sleepy midnight calls, for sharing butterscotch ice cream with me, and for making my world complete. I love you more than all the stars in the sky... 💖✨";
     const el = document.getElementById('typewriterText');
     let i = 0;
 
@@ -585,7 +808,7 @@ function playMelody() {
 // 12. SMOOTH SCROLL FOR NAV LINKS
 // ==========================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
